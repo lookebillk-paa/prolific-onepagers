@@ -4,48 +4,77 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bob's Plumbing & Drain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8f9fa; color: #222; }
-  header { background: #1e3a5f; color: #fff; padding: 60px 40px 40px; text-align: center; }
-  header h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.5px; }
-  header p { margin-top: 12px; font-size: 1.1rem; opacity: 0.85; max-width: 560px; margin-left: auto; margin-right: auto; }
-  .cta-bar { background: #2e86de; padding: 20px 40px; text-align: center; }
-  .cta-bar a { color: #fff; font-size: 1.3rem; font-weight: 700; text-decoration: none; letter-spacing: 0.5px; }
-  .services { max-width: 700px; margin: 50px auto; padding: 0 24px; }
-  .services h2 { font-size: 1.5rem; color: #1e3a5f; margin-bottom: 20px; font-weight: 700; }
-  .services ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .services li { background: #fff; border-left: 4px solid #2e86de; padding: 14px 18px; border-radius: 4px; font-size: 0.95rem; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
-  .trust { background: #1e3a5f; color: #fff; padding: 40px; text-align: center; margin-top: 40px; }
-  .trust p { font-size: 1rem; opacity: 0.8; }
-  .trust .badge { display: inline-block; margin: 8px 12px; background: rgba(255,255,255,0.12); border-radius: 20px; padding: 6px 18px; font-size: 0.9rem; }
-  footer { background: #1a1a1a; color: #888; padding: 20px; text-align: center; font-size: 0.8rem; }
-  @media (max-width: 540px) { .services ul { grid-template-columns: 1fr; } header h1 { font-size: 1.8rem; } }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',system-ui,sans-serif;background:#f8f9fa;color:#18181b;-webkit-font-smoothing:antialiased;line-height:1.5}
+a{text-decoration:none;color:inherit}
+.hero{background:#1e3a5f;padding:clamp(60px,10vw,96px) 24px clamp(80px,12vw,112px);text-align:center;position:relative;clip-path:polygon(0 0,100% 0,100% 90%,0 100%);margin-bottom:-32px}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% -10%,#2e86de44 0%,transparent 65%);pointer-events:none}
+.eyebrow{display:inline-block;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.14);color:rgba(255,255,255,0.65);font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:5px 16px;border-radius:100px;margin-bottom:18px}
+.hero-name{font-size:clamp(1.9rem,5.5vw,3.2rem);font-weight:800;color:#fff;letter-spacing:-0.025em;line-height:1.1;margin-bottom:12px}
+.hero-tagline{font-size:clamp(0.9rem,2vw,1.05rem);color:rgba(255,255,255,0.6);max-width:500px;margin:0 auto 22px;line-height:1.65}
+.hero-rating{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:28px}
+.stars{color:#2e86de;font-size:1rem;letter-spacing:2px}
+.rating-label{font-size:0.8rem;color:rgba(255,255,255,0.5)}
+.phone-btn{display:inline-flex;align-items:center;gap:10px;background:#2e86de;color:#fff;font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;padding:15px 30px;border-radius:100px;box-shadow:0 6px 28px #2e86de55;transition:transform .15s,box-shadow .15s;position:relative;z-index:1}
+.phone-btn:hover{transform:translateY(-2px);box-shadow:0 10px 36px #2e86de66}
+.phone-btn:active{transform:translateY(0)}
+.content{max-width:700px;margin:0 auto;padding:clamp(52px,8vw,72px) 24px 40px;position:relative;z-index:1}
+.kicker{font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#2e86de;margin-bottom:8px}
+.section-h{font-size:clamp(1.3rem,3vw,1.75rem);font-weight:700;color:#18181b;letter-spacing:-0.02em;margin-bottom:22px}
+.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:48px}
+.svc-card{background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:12px;padding:14px 16px;display:flex;align-items:flex-start;gap:11px;transition:border-color .15s,box-shadow .15s}
+.svc-card:hover{border-color:#2e86de55;box-shadow:0 2px 12px #2e86de18}
+.svc-check{width:28px;height:28px;min-width:28px;background:#2e86de18;border-radius:7px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.svc-check svg{width:13px;height:13px}
+.svc-name{font-size:0.875rem;font-weight:600;color:#27272a;line-height:1.45}
+.trust-bar{background:#1e3a5f;border-radius:16px;padding:24px 28px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;margin-bottom:48px}
+.trust-bar .val{font-size:1.35rem;font-weight:800;color:#2e86de;letter-spacing:-0.02em;margin-bottom:2px}
+.trust-bar .lbl{font-size:0.67rem;font-weight:500;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.06em}
+.bottom-cta{background:#1e3a5f;border-radius:20px;padding:44px 32px;text-align:center;position:relative;overflow:hidden;margin-bottom:36px}
+.bottom-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 120%,#2e86de44 0%,transparent 60%);pointer-events:none}
+.bottom-cta h2{font-size:clamp(1.25rem,3vw,1.7rem);font-weight:700;color:#fff;margin-bottom:8px;position:relative;z-index:1}
+.bottom-cta p{color:rgba(255,255,255,0.55);font-size:0.9rem;margin-bottom:24px;position:relative;z-index:1}
+footer{text-align:center;padding:20px 24px;color:#a1a1aa;font-size:0.78rem;border-top:1px solid #e4e4e7}
+footer strong{color:#52525b}
+footer a{color:#a1a1aa}
+@media(max-width:580px){.services-grid{grid-template-columns:1fr}.trust-bar{grid-template-columns:1fr 1fr;gap:20px 8px}.bottom-cta{padding:32px 20px}}
 </style>
 </head>
 <body>
-<header>
-  <h1>Bob's Plumbing & Drain</h1>
-  <p>Professional Plumber Services in Louisville KY</p>
-</header>
-<div class="cta-bar">
-  <a href="tel:15022413848">📞 Call Now: +15022413848</a>
+<div class="hero">
+  <div class="eyebrow">Plumber &nbsp;&middot;&nbsp; Louisville KY</div>
+  <h1 class="hero-name">Bob's Plumbing & Drain</h1>
+  <p class="hero-tagline">Professional Plumber Services in Louisville KY</p>
+  <div class="hero-rating"><span class="stars">★★★★☆</span><span class="rating-label">4.8 &nbsp;&middot;&nbsp; 12 reviews</span></div>
+  <a href="tel:+15022413848" class="phone-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+15022413848</a>
 </div>
-<section class="services">
-  <h2>Our Services</h2>
-  <ul>
-        <li>Professional Plumber Services</li>
-        <li>Free Estimates</li>
-        <li>Licensed & Insured</li>
-  </ul>
-</section>
-<div class="trust">
-  <p>Why choose us?</p>
-  <span class="badge">✓ Licensed &amp; Insured</span>
-  <span class="badge">✓ Free Estimates</span>
-  <span class="badge">✓ Local Experts</span>
-  <span class="badge">✓ 5-Star Service</span>
+<div class="content">
+  <div class="kicker">What We Do</div>
+  <h2 class="section-h">Our Services</h2>
+  <div class="services-grid">
+    <div class="svc-card"><div class="svc-check"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 5-5.5" stroke="#2e86de" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="svc-name">Professional Plumber Services</div></div>
+    <div class="svc-card"><div class="svc-check"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 5-5.5" stroke="#2e86de" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="svc-name">Free Estimates</div></div>
+    <div class="svc-card"><div class="svc-check"><svg viewBox="0 0 14 14" fill="none"><path d="M2.5 7l3 3 5-5.5" stroke="#2e86de" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="svc-name">Licensed & Insured</div></div>
+  </div>
+  <div class="trust-bar">
+    <div><div class="val">4.8</div><div class="lbl">Rating</div></div>
+    <div><div class="val">12+</div><div class="lbl">Reviews</div></div>
+    <div><div class="val">&#10003;</div><div class="lbl">Licensed &amp; Insured</div></div>
+    <div><div class="val">Free</div><div class="lbl">Estimates</div></div>
+  </div>
+  <div class="bottom-cta">
+    <h2>Ready to get started?</h2>
+    <p>Serving Louisville KY and surrounding areas. Call or text anytime.</p>
+    <a href="tel:+15022413848" class="phone-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Call +15022413848</a>
+  </div>
 </div>
-<footer>Louisville KY &nbsp;|&nbsp; Bob's Plumbing & Drain</footer>
+<footer>
+  <strong>Bob's Plumbing & Drain</strong> &nbsp;&middot;&nbsp; Louisville KY<br>
+  <span style="color:#d4d4d8;margin-top:4px;display:block">Preview by <a href="mailto:support@prolificautomation.ai">Prolific Web</a></span>
+</footer>
 </body>
 </html>
